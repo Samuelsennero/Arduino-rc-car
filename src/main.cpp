@@ -1,9 +1,39 @@
 #include <Arduino.h>
 
-void setup() {
-  // put your setup code here, to run once:
+ int motorPin3  = 10; // Pin  7 of L293
+ int motorPin4  = 9;  // Pin  2 of L293
+
+void setup(){
+  
+    pinMode(motorPin3, OUTPUT);
+    pinMode(motorPin4, OUTPUT);
+    Serial.begin(9600);
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
+
+void clockwise() {
+   digitalWrite(motorPin3, HIGH);
+  digitalWrite(motorPin4, LOW);
+
 }
+
+void counter_clockwise() {
+   digitalWrite(motorPin3, LOW);
+  digitalWrite(motorPin4, HIGH);
+
+}
+
+void stop() {
+   digitalWrite(motorPin3, LOW);
+  digitalWrite(motorPin4, LOW);
+
+}
+
+void loop(){
+  clockwise();
+  delay(4000);
+  counter_clockwise();
+  delay(4000);
+
+}
+
