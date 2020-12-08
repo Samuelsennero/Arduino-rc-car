@@ -45,16 +45,16 @@ void stopMotors() {
   digitalWrite(motorPin4, LOW);
 }
 
-// loop
+// loop.
 
 void loop(){
   Motor1Clockwise();
   Motor2Clockwise();
-  delay(4000);
+  delay(3000);
   Motor1CounterClockwise();
   Motor2CounterClockwise();
-  delay(4000);
-  
+  delay(3000);
+
   
 }
 
