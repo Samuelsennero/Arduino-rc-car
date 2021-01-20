@@ -24,7 +24,7 @@ int signalHornButtonPin = 4;
 
 int forwardButtonPin = 2;
 
-int backwardButtonPin = 11;
+int reverseButtonPin = 11;
 
 int leftButtonPin = 7;
 
@@ -42,7 +42,7 @@ void setup(){
     pinMode(signalHornPin,OUTPUT);
     pinMode(signalHornButtonPin,INPUT);
     pinMode(forwardButtonPin, INPUT);
-    pinMode(backwardButtonPin, INPUT);
+    pinMode(reverseButtonPin, INPUT);
     pinMode(leftButtonPin, INPUT);
     pinMode(rightButtonPin, INPUT);
     Serial.begin(9600);
@@ -88,7 +88,7 @@ void forward() {
   Servo1.write(90); 
 }
 
-void backward() {
+void reverse() {
   leftMotorReverse();
   rightMotorReverse();
   Servo1.write(90);
@@ -118,7 +118,7 @@ void loop(){
    forward();
  }
  
- if(digitalRead(forwardButtonPin) == HIGH && digitalRead(backwardButtonPin) == HIGH){
+ if(digitalRead(forwardButtonPin) == HIGH && digitalRead(reverseButtonPin) == HIGH){
    stop();
    delay(2000);
  }
@@ -136,9 +136,9 @@ void loop(){
    forward();
  }
 
- if(digitalRead(backwardButtonPin) == HIGH) {
+ if(digitalRead(reverseButtonPin) == HIGH) {
    turnBackLightOn();
-   backward();
+   reverse();
  }
  
  if(digitalRead(leftButtonPin) == HIGH) {
