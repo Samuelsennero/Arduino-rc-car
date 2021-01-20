@@ -22,7 +22,7 @@ My code starts with including *Arduino.h* and *Servo.h* which is two libraries. 
 * A bunch of wires
 
 ## Circuit diagram
-![Image of Circuit diagram](https://github.com/Samuelsennero/Arduino-rc-car/blob/master/Images/IMG_2194.jpg)
+![Image of Circuit diagram](https://github.com/Samuelsennero/Arduino-rc-car/blob/master/Images/kretsschema.jpg)
 
 ## 3D printed chassi
 As a part of this project I also made a chassi to my car in *Fusion 360*. Unfortunately the 3D printer I was thinking to print it with didn't work. But the file got finished and you can see in the picture below what it looks like.
