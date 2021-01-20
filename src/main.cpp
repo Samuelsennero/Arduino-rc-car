@@ -71,7 +71,7 @@ void leftMotorReverse() {
   digitalWrite(motorPin4, HIGH);
 }
 
-// Backlight
+// Backlight: when the reverse button is pressed down, the warning light for reverse is lit.
 void turnBackLightOn() {
   digitalWrite(ledPin, HIGH);
 }
@@ -94,10 +94,12 @@ void reverse() {
   Servo1.write(90);
 }
 
+// Rotate power steering 90 degrees
 void right() {
   Servo1.write(0);
 }
 
+// Rotate power steering 90 degrees
 void left() {
   Servo1.write(180);
 }
@@ -114,40 +116,42 @@ void stop() {
 
 // loop
 void loop(){
-  if(digitalRead(forwardButtonPin) == HIGH) {
-   forward();
- }
- 
- if(digitalRead(forwardButtonPin) == HIGH && digitalRead(reverseButtonPin) == HIGH){
-   stop();
-   delay(2000);
- }
- 
- if(digitalRead(signalHornButtonPin) == HIGH) {
-   digitalWrite(signalHornPin, HIGH);
- }
- else
- {
-   digitalWrite(signalHornPin, LOW);
-  }
 
- if(digitalRead(forwardButtonPin) == HIGH) {
+  // Check forward button. If pressed, call forward()
+  if(digitalRead(forwardButtonPin) == HIGH) {
    turnBackLightOff();
    forward();
- }
+   }
 
- if(digitalRead(reverseButtonPin) == HIGH) {
+  // To stop both motors, a combination off pressing down two buttons (forward and reverse) is used
+  if(digitalRead(forwardButtonPin) == HIGH && digitalRead(reverseButtonPin) == HIGH){
+   stop();
+   delay(2000);
+   }
+  
+  // Check signal horn button. If pressed, set pin for signal horn to HIGH. If not pressed, set pin for signal horn to LOW
+  if(digitalRead(signalHornButtonPin) == HIGH) {
+   digitalWrite(signalHornPin, HIGH);
+   }
+   else {
+   digitalWrite(signalHornPin, LOW);
+   }
+
+  // Check reverse button. If pressed, call turnBackLightOn() and reverse()
+  if(digitalRead(reverseButtonPin) == HIGH) {
    turnBackLightOn();
    reverse();
- }
- 
- if(digitalRead(leftButtonPin) == HIGH) {
+   }
+   
+  // Check left button. If pressed, call left()
+  if(digitalRead(leftButtonPin) == HIGH) {
    left();
- }
+   }
 
- if(digitalRead(rightButtonPin) == HIGH) {
+  // Check right button. If pressed, call right()
+  if(digitalRead(rightButtonPin) == HIGH) {
    right();
- }
+   }
   
 }
 
